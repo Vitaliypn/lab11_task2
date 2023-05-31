@@ -100,17 +100,12 @@ class LinkedBST(AbstractCollection):
 
     def add(self, item):
         """Adds item to the tree."""
-
-        # Tree is empty, so new item goes at the root
         if self.isEmpty():
             self._root = BSTNode(item)
             self._size += 1
-            return
-
-        # Helper function to search for item's position
+            return None
         node = self._root
         while True:
-            # New item is less, go left until spot is found
             if item < node.data:
                 if node.left is None:
                     node.left = BSTNode(item)
@@ -118,7 +113,6 @@ class LinkedBST(AbstractCollection):
                     break
                 else:
                     node = node.left
-            # New item is greater or equal, go right until spot is found
             else:
                 if node.right is None:
                     node.right = BSTNode(item)
